@@ -32,6 +32,10 @@ for i in range(4):
             ausg_interp[i,j]=(eing[math.ceil(r_temp),math.floor(c_temp)]-eing[math.floor(r_temp),math.floor(c_temp)])*r_temp+(eing[math.floor(r_temp),math.ceil(c_temp)]-eing[math.floor(r_temp),math.floor(c_temp)])*c_temp+(eing[math.ceil(r_temp),math.ceil(c_temp)]+eing[math.floor(r_temp),math.floor(c_temp)]-eing[math.floor(r_temp),math.ceil(c_temp)]-eing[math.ceil(r_temp),math.floor(c_temp)])*r_temp*c_temp+eing[math.floor(r_temp),math.floor(c_temp)]
         else:
             ausg_interp[i,j]=math.nan
+        if ausg_interp[i,j]<0:
+            ausg_interp[i,j]=0
+        elif ausg_interp[i,j]>255:
+            ausg_interp[i,j]=255
 print("Transformation des Bildes mit Hilfe der bilinearen Interpolation")
 for x in ausg_interp:
     print(*x, sep=" ")
